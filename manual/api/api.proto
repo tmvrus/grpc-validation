@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "api";
+
+service CarShop {
+  rpc GetCarsForSale(GetCarsForSaleRequest) returns (GetCarsForSaleResponse);
+}
+
+message GetCarsForSaleRequest {
+  uint32 year_from = 1; // more than 1980
+  uint32 year_to = 2;   // less then current date, more than year_from
+
+  repeated string color = 3; // red, green, black, white: at least one, unique, less or  4
+
+  uint32 mileage_from = 4; // more than 0
+  uint32 mileage_to = 5;   // less then 1000000, more than mileage_from
+
+//  double price_from = 6;
+//  double price_to = 7;
+
+//  string manufacture = 9; // cant be empty
+//  string model = 10; // cant be empty
+
+}
+
+message GetCarsForSaleResponse {}
