@@ -3,14 +3,14 @@ package manual
 import (
 	"testing"
 
-	"github.com/tmvrus/grpc-validation/manual/api"
+	"github.com/tmvrus/grpc-validation/auto/api"
 )
 
 func Test_ServerValidate(t *testing.T) {
 	req := &api.GetCarsForSaleRequest{
 		YearFrom:    2000,
 		YearTo:      2020,
-		Color:       []string{"green", "black"},
+		Color:       []string{"green", "green"},
 		MileageFrom: 150,
 		MileageTo:   300,
 	}

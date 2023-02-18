@@ -17,11 +17,8 @@ message GetCarsForSaleRequest {
   uint32 mileage_from = 4; // more than 0
   uint32 mileage_to = 5;   // less then 1000000, more than mileage_from
 
-//  double price_from = 6;
-//  double price_to = 7;
-
-//  string manufacture = 9; // cant be empty
-//  string model = 10; // cant be empty
+  string vendor = 6; // cant be empty
+  string model = 7; // cant be empty
 
 }
 

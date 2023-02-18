@@ -61,5 +61,13 @@ func validate(r *api.GetCarsForSaleRequest) error {
 	if r.MileageTo > 1000000 {
 		return fmt.Errorf("invalid MileageTo: %d", r.MileageTo)
 	}
+
+	if r.Vendor == "" {
+		return fmt.Errorf("vendor cant be empty")
+	}
+	if r.Model == "" {
+		return fmt.Errorf("model cant be empty")
+	}
+
 	return nil
 }

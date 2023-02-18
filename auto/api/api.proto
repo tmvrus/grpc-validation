@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "api";
+
+import "validate/validate.proto";
+
+service CarShop {
+  rpc GetCarsForSale(GetCarsForSaleRequest) returns (GetCarsForSaleResponse);
+}
+
+message GetCarsForSaleRequest {
+  uint32 year_from = 1  [(validate.rules).uint32.gt = 1980];
+  uint32 year_to = 2;
+
+  repeated string color = 3 [(validate.rules).repeated = {min_items: 1, max_items: 3, unique: true,
+    items: {
+      string: {
+        in: ["red", "green", "black", "white"]
+      }
+    }
+  }];
+
+  uint64 mileage_from = 4 [(validate.rules).uint64.gt = 0];
+  uint64 mileage_to = 5 [(validate.rules).uint64.lt = 1000000];
+
+  string vendor = 6 [(validate.rules).string = {min_len: 5, max_len: 100}];
+  string model = 7 [(validate.rules).string = {min_len: 5, max_len: 100}];
+
+}
+
+message GetCarsForSaleResponse {}
